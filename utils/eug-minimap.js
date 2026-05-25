@@ -1,20 +1,16 @@
 // ══════════════════════════════════════════════════════
-// EUG Save — Scene Serialization (JSON + localStorage)
+// EUG Minimap — Canvas 2D Overhead View
 // ══════════════════════════════════════════════════════
 //
 // 
-Save/Load scene to JSON file or browser localStorage.// Serializes all buildings, roads, props, GLB models, blueprints.
+Real-time minimap showing buildings, roads, player position,// NPCs, waypoints. Draws on 2D canvas overlay.
 //
 // Dependencies:
  *   - eug-core.js
- *   - eug-build.js
+ *   - eug-player.js
 //
 // Key exports (globals):
- *   - saveScene
- *   - loadScene
- *   - newScene
- *   - pushUndo
- *   - popUndo
+ *   - drawMinimap
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -22,7 +18,7 @@ Save/Load scene to JSON file or browser localStorage.// Serializes all buildings
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-save.js loaded');
+console.log('[EUG] eug-minimap.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html

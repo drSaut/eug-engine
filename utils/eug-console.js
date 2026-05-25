@@ -1,20 +1,16 @@
 // ══════════════════════════════════════════════════════
-// EUG Save — Scene Serialization (JSON + localStorage)
+// EUG Console — Dev Logger + Error Display
 // ══════════════════════════════════════════════════════
 //
 // 
-Save/Load scene to JSON file or browser localStorage.// Serializes all buildings, roads, props, GLB models, blueprints.
+Floating dev console with Error/Warn/Info filter.// Intercepts console.error/warn. Shows FPS, object count.
 //
 // Dependencies:
  *   - eug-core.js
- *   - eug-build.js
 //
 // Key exports (globals):
- *   - saveScene
- *   - loadScene
- *   - newScene
- *   - pushUndo
- *   - popUndo
+ *   - devLog
+ *   - showToast
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -22,7 +18,7 @@ Save/Load scene to JSON file or browser localStorage.// Serializes all buildings
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-save.js loaded');
+console.log('[EUG] eug-console.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html
