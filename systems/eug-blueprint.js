@@ -1,28 +1,23 @@
 // ══════════════════════════════════════════════════════
-// EUG HUD — GTA HUD, Weapons, Bombs, Player State
+// EUG Blueprint Engine — Node-based Logic System
 // ══════════════════════════════════════════════════════
 //
 // 
-GTA-style HUD (health/armor/money/wanted/score),// weapon wheel (7 weapons), bomb system (timer/remote),// mission timer, objective text, speedometer, WASTED screen.
+Visual blueprint editor (Unreal-style), node catalog (80+ nodes),// runtime executor, event system, data pin evaluator.// Categories: Events, Flow, Transform, GTA, Player, Bullet,// Vehicle, Combat, Mission, Bomb, Camera, Entity, HUD, Math.
 //
 // Dependencies:
  *   - eug-core.js
  *   - eug-player.js
- *   - eug-bullet.js
+ *   - eug-hud.js
 //
 // Key exports (globals):
- *   - player
- *   - _weapons
- *   - _currentWeapon
- *   - buildGameHUD
- *   - updateHUD
- *   - openWeaponWheel
- *   - _selectWeapon
- *   - _shootWeapon
- *   - _plantBomb
- *   - _detonateRemoteBombs
- *   - _playerDie
- *   - _playerRespawn
+ *   - blueprints
+ *   - openBlueprintEditor
+ *   - bpRun
+ *   - bpExecFrom
+ *   - executeBlueprintEvent
+ *   - executeBlueprintAllEvent
+ *   - NODE_TYPES
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -30,7 +25,7 @@ GTA-style HUD (health/armor/money/wanted/score),// weapon wheel (7 weapons), bom
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-hud.js loaded');
+console.log('[EUG] eug-blueprint.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html

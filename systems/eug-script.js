@@ -1,28 +1,18 @@
 // ══════════════════════════════════════════════════════
-// EUG HUD — GTA HUD, Weapons, Bombs, Player State
+// EUG Script System — Per-Entity JavaScript Runtime
 // ══════════════════════════════════════════════════════
 //
 // 
-GTA-style HUD (health/armor/money/wanted/score),// weapon wheel (7 weapons), bomb system (timer/remote),// mission timer, objective text, speedometer, WASTED screen.
+Attach JavaScript to any entity. Script runs every frame// in play mode. Full API access: entity, dt, player, bullets, etc.// Syntax-highlighted editor with snippet library.
 //
 // Dependencies:
  *   - eug-core.js
  *   - eug-player.js
- *   - eug-bullet.js
 //
 // Key exports (globals):
- *   - player
- *   - _weapons
- *   - _currentWeapon
- *   - buildGameHUD
- *   - updateHUD
- *   - openWeaponWheel
- *   - _selectWeapon
- *   - _shootWeapon
- *   - _plantBomb
- *   - _detonateRemoteBombs
- *   - _playerDie
- *   - _playerRespawn
+ *   - entityScripts
+ *   - _scriptFns
+ *   - openScriptEditor
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -30,7 +20,7 @@ GTA-style HUD (health/armor/money/wanted/score),// weapon wheel (7 weapons), bom
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-hud.js loaded');
+console.log('[EUG] eug-script.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html
