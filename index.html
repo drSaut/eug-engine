@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>EUG Engine v3.0</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#fff; font-family:Arial,sans-serif; overflow:hidden; }
+#boot-screen {
+  position:fixed; inset:0; background:#06060f;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; z-index:9999;
+}
+#boot-title { font-size:32px; font-weight:900; color:#5b8dee; letter-spacing:4px; margin-bottom:8px; }
+#boot-sub { font-size:11px; color:#404060; letter-spacing:2px; margin-bottom:32px; }
+#boot-bar-wrap { width:240px; height:4px; background:#1a1a2e; border-radius:2px; margin-bottom:12px; }
+#boot-bar { height:100%; background:#5b8dee; border-radius:2px; transition:width .3s; width:0%; }
+#boot-status { font-size:10px; color:#404060; letter-spacing:1px; }
+#boot-error { font-size:11px; color:#e05555; margin-top:12px; display:none; }
+</style>
+</head>
+<body>
+
+<div id="boot-screen">
+  <div id="boot-title">EUG ENGINE</div>
+  <div id="boot-sub">v 3 . 0 · M O D U L A R</div>
+  <div id="boot-bar-wrap"><div id="boot-bar"></div></div>
+  <div id="boot-status">Initializing...</div>
+  <div id="boot-error"></div>
+</div>
+
+<script>
+// ── EUG Engine Bootstrap ─────────────────────────────
+// This file is intentionally small.
+// All engine logic lives in the modules below.
+// Change YOUR_GITHUB_USERNAME to your actual username.
+
+const GITHUB_USER = 'YOUR_GITHUB_USERNAME';
+const GITHUB_REPO = 'eug-engine';
+const BRANCH      = 'main';
+
+// Base CDN URL — jsDelivr serves GitHub files with correct MIME type
+const CDN = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${BRANCH}`;
+
+// ── Module load order ────────────────────────────────
+// Order matters — each module depends on the ones above it
+const MODULES = [
+  // 1. External dependencies
+  { url: 'https://cdn.jsdelivr.net/npm/playcanvas@2.2.2/build/playcanvas.js', label: 'PlayCanvas' },
+
+  // 2. Core engine
+  { url: `${CDN}/core/eug-core.js`,        label: 'Core Scene' },
+  { url: `${CDN}/core/eug-player.js`,      label: 'Player System' },
+  { url: `${CDN}/core/eug-bullet.js`,      label: 'Bullet System' },
+
+  // 3. Game systems
+  { url: `${CDN}/systems/eug-hud.js`,      label: 'GTA HUD' },
+  { url: `${CDN}/systems/eug-blueprint.js`,label: 'Blueprint Engine' },
+  { url: `${CDN}/systems/eug-script.js`,   label: 'Script System' },
+  { url: `${CDN}/systems/eug-npc.js`,      label: 'NPC AI' },
+  { url: `${CDN}/systems/eug-weather.js`,  label: 'Weather' },
+
+  // 4. Editor
+  { url: `${CDN}/editor/eug-editor.js`,    label: 'Editor' },
+  { url: `${CDN}/editor/eug-build.js`,     label: 'Build Tools' },
+  { url: `${CDN}/editor/eug-city.js`,      label: 'City Generator' },
+  { url: `${CDN}/editor/eug-publish.js`,   label: 'Publish System' },
+
+  // 5. Utilities
+  { url: `${CDN}/utils/eug-save.js`,       label: 'Save / Load' },
+  { url: `${CDN}/utils/eug-minimap.js`,    label: 'Minimap' },
+  { url: `${CDN}/utils/eug-console.js`,    label: 'Dev Console' },
+];
+
+// ── Loader ───────────────────────────────────────────
+const bootBar    = document.getElementById('boot-bar');
+const bootStatus = document.getElementById('boot-status');
+const bootError  = document.getElementById('boot-error');
+
+function setProgress(pct, label) {
+  bootBar.style.width = pct + '%';
+  bootStatus.textContent = label;
+}
+
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = url;
+    s.onload  = resolve;
+    s.onerror = () => reject(new Error('Failed: ' + url));
+    document.head.appendChild(s);
+  });
+}
+
+async function bootEngine() {
+  for (let i = 0; i < MODULES.length; i++) {
+    const mod = MODULES[i];
+    const pct = Math.round(((i) / MODULES.length) * 100);
+    setProgress(pct, 'Loading ' + mod.label + '...');
+    try {
+      await loadScript(mod.url);
+    } catch(e) {
+      bootError.style.display = 'block';
+      bootError.textContent = '❌ ' + e.message;
+      console.error(e);
+      return;
+    }
+  }
+  setProgress(100, 'Ready!');
+  setTimeout(() => {
+    document.getElementById('boot-screen').style.display = 'none';
+    // Signal all modules that everything is loaded
+    if (typeof window.EUG_onReady === 'function') window.EUG_onReady();
+  }, 300);
+}
+
+bootEngine();
+</script>
+
+</body>
+</html>
