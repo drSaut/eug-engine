@@ -1,0 +1,12 @@
+{
+  "name": "eug-engine",
+  "version": "3.0.0",
+  "description": "EUG Engine — Modular 3D mobile game builder powered by PlayCanvas",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "lint": "node --check core/*.js systems/*.js editor/*.js utils/*.js"
+  },
+  "keywords": ["game-engine", "playcanvas", "mobile", "gta", "blueprint"],
+  "license": "MIT"
+}
