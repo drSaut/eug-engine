@@ -1,19 +1,17 @@
 // ══════════════════════════════════════════════════════
-// EUG Editor — Gizmo, Selection, Properties Panel
+// EUG Publish — Export Standalone Game HTML
 // ══════════════════════════════════════════════════════
 //
 // 
-Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (Transform/Material/Physics/Blueprint tabs),// scene outliner, undo/redo, long-press context menu.
+Publish panel: splash screen designer, GLB URL config,// export self-contained HTML game with loader, dual joystick,// collision, bullet system, GTA HUD.
 //
 // Dependencies:
  *   - eug-core.js
+ *   - eug-build.js
 //
 // Key exports (globals):
- *   - selectedEntity
- *   - selectEntity
- *   - gizmoDetach
- *   - buildFullPropsPanel
- *   - refreshOutliner
+ *   - openPublishPanel
+ *   - buildPublishedGame
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -21,7 +19,7 @@ Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (T
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-editor.js loaded');
+console.log('[EUG] eug-publish.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html

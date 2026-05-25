@@ -1,19 +1,23 @@
 // ══════════════════════════════════════════════════════
-// EUG Editor — Gizmo, Selection, Properties Panel
+// EUG Build — Buildings, Roads, Props, GLB Import
 // ══════════════════════════════════════════════════════
 //
 // 
-Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (Transform/Material/Physics/Blueprint tabs),// scene outliner, undo/redo, long-press context menu.
+All BUILD tab functionality: spawn buildings, draw roads,// place props, GLB local/URL import, auto-scale, animation wiring,// remote asset library, billboard system.
 //
 // Dependencies:
  *   - eug-core.js
+ *   - eug-editor.js
 //
 // Key exports (globals):
- *   - selectedEntity
- *   - selectEntity
- *   - gizmoDetach
- *   - buildFullPropsPanel
- *   - refreshOutliner
+ *   - placedBuildings
+ *   - placedProps
+ *   - roads
+ *   - glbModels
+ *   - remoteModels
+ *   - spawnBuilding
+ *   - buildRoad
+ *   - loadRemoteGLB
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -21,7 +25,7 @@ Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (T
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-editor.js loaded');
+console.log('[EUG] eug-build.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html

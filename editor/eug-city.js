@@ -1,19 +1,16 @@
 // ══════════════════════════════════════════════════════
-// EUG Editor — Gizmo, Selection, Properties Panel
+// EUG City — Procedural City Generator
 // ══════════════════════════════════════════════════════
 //
 // 
-Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (Transform/Material/Physics/Blueprint tabs),// scene outliner, undo/redo, long-press context menu.
+Generate cities in 4 sizes (Small/Medium/Big/Mega).// Smart building placement: towers in centre, offices mid-ring,// warehouses outskirts. Random heights snapped to 3m grid.
 //
 // Dependencies:
  *   - eug-core.js
+ *   - eug-build.js
 //
 // Key exports (globals):
- *   - selectedEntity
- *   - selectEntity
- *   - gizmoDetach
- *   - buildFullPropsPanel
- *   - refreshOutliner
+ *   - generateCity
 //
 // ── TODO: extract from EUG_BP_1779724026.html ────────
 // This is a stub. Copy the relevant section from the
@@ -21,7 +18,7 @@ Edit mode UI, gizmo (move/rotate/scale), entity selection,// properties panel (T
 // index.html and checking the browser console.
 // ══════════════════════════════════════════════════════
 
-console.log('[EUG] eug-editor.js loaded');
+console.log('[EUG] eug-city.js loaded');
 
 // ── PASTE CODE FROM MONOLITH HERE ────────────────────
 // Reference: EUG_BP_1779724026.html
